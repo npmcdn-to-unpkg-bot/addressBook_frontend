@@ -32,7 +32,8 @@
                 <span ng-show="sortType == 'country' && sortReverse"
                       class="glyphicon glyphicon-arrow-up"></span>
                 <span ng-show="filterStatus.country"
-                      class="glyphicon glyphicon-filter"></span>
+                      ng-click="cityClickEvent()"
+                      class="glyphicon glyphicon-filter"></span></a>
             </th>
             <th ng-click="sortType = 'city'; sortReverse = !sortReverse">
                 Город
@@ -89,20 +90,26 @@
                        ng-model="search.country"></input>
             </td>
             <td>
-                <input type="text" placeholder="поиск" ng-change="filter.city()" ng-model="search.city"
+                <input type="text" placeholder="поиск"
+                       ng-change="filter.city()"
+                       ng-model="search.city"
                        ng-pattern="regexSet.city"></input>
             </td>
             <td>
-                <input type="text" placeholder="поиск" ng-model="search.street"></input>
+                <input type="text" placeholder="поиск"
+                       ng-model="search.street"></input>
             </td>
             <td>
-                <input type="text" placeholder="поиск" ng-model="search.house"></input>
+                <input type="text" placeholder="поиск"
+                       ng-model="search.house"></input>
             </td>
             <td>
-                <input type="text" placeholder="поиск" ng-model="search.postcode"></input>
+                <input type="text" placeholder="поиск"
+                       ng-model="search.postcode"></input>
             </td>
             <td>
-                <input type="text" placeholder="поиск" ng-model="search.date"></input>
+                <input type="text" placeholder="поиск"
+                       ng-model="search.date"></input>
             </td>
         </tr>
         </thead>
@@ -115,7 +122,7 @@
             <td>{{address.street}}</td>
             <td>{{address.house}}</td>
             <td>{{address.postcode}}</td>
-            <td>{{address.date | date:'yyyy-MM-dd'}}</td>
+            <td>{{address.date}}</td>
         </tr>
         </tbody>
     </table>

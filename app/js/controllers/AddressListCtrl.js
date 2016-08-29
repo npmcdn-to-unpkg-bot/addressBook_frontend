@@ -98,12 +98,17 @@ addressBookApp.controller('AddressListCtrl',['$scope','$log',function($scope,$lo
         postcode: false,
         date: false
     };
-
+    $scope.cityClickEvent = function(){
+                $log.debug("click on filter");
+    };
 	$scope.filter = {
 		country : function(){
+            $scope.filterStatus.country = $scope.search.country == "" ? false : true;
+            $log.debug($scope.search.country);
 		},
 		city : function(){
-			$log.debug("filter");
+			$scope.filterStatus.city = $scope.search.city == "" ? false : true;
+            $log.debug($scope.search.city);
 		}
 	}
     //
