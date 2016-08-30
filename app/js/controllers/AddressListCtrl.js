@@ -15,6 +15,7 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', '$http', functio
         $log.error("Can't get JSON");
     });
     /*Test array
+    From database formAT 2016-08-24 23:00:00.000000
     $scope.addresses = [
         {
             country: 'Россия',
