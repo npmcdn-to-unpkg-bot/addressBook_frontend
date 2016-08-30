@@ -3,17 +3,18 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', '$http', functio
     /*For testing suppose then server located on a localhost
      and run by Sympfony's cgi(app/console server:run command) on remote port 8000
     */
-    /*
-    $scope.serverURL="localhost:8000";
+
+    $scope.serverURL="http://localhost:8000";
     $http.get($scope.serverURL).
     success(function(data, status, headers, config) {
-        $scope.posts = data;
+        $scope.addresses = data;
         $log.debug("JSON acepted");
+        $log.debug($scope.addresses);
     }).
     error(function(data, status, headers, config) {
-        // log error
+        $log.error("Can't get JSON");
     });
-    */
+    /*Test array
     $scope.addresses = [
         {
             country: 'Россия',
@@ -95,6 +96,7 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', '$http', functio
         }
 
     ];
+    */
 
     //set default parameters for sortType
     $scope.sortType = "country";
