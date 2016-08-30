@@ -1,10 +1,19 @@
 addressBookApp.controller('AddressListCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
 
     /*For testing suppose then server located on a localhost
-     and run by Sympfony cgi(as app/console server run command) on remoteport 8000
+     and run by Sympfony's cgi(app/console server:run command) on remote port 8000
     */
-    serverURL="localhost:8000/";
-    $http
+    /*
+    $scope.serverURL="localhost:8000";
+    $http.get($scope.serverURL).
+    success(function(data, status, headers, config) {
+        $scope.posts = data;
+        $log.debug("JSON acepted");
+    }).
+    error(function(data, status, headers, config) {
+        // log error
+    });
+    */
     $scope.addresses = [
         {
             country: 'Россия',
