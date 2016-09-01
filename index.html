@@ -40,6 +40,11 @@
         <div class="col-lg-2">
         </div>
     </div>
+    <div class="row" ng-show="msgBox.status">
+        <div class="col-lg-12 text-center alert alert-danger">
+            <h3 >{{msgBox.message}}</h3>
+        </div>
+    </div>
     <table class="table table-bordered table-striped">
         <thead>
         <!-- Add Order filter event (trigger is clicking onto the head) and images for filter status-->

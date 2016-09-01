@@ -1,14 +1,16 @@
 addressBookApp.controller('AddressListCtrl', ['$scope', '$log', '$http', 'DataService',
     function ($scope, $log, $http, DataService) {
-        var serverURL = "http://localhost:8000";
         /*For testing suppose then server located on a localhost
          and run by Sympfony's cgi(app/console server:run command) on remote port 8000
          */
+        var serverURL = "http://localhost:8000";
+
         $scope.dataLoading = true;
         DataService.getData(serverURL).then(function (response) {
             $scope.addresses = response;
         }, function () {
             $log.debug("Can't load the data!");
+            $scope.msgBox.show("Не удалось установить соединение с сервером")
         }).finally(function () {
             $scope.dataLoading = false;
         });
@@ -141,6 +143,22 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', '$http', 'DataSe
                 $log.debug($scope.search.date);
             }
         }
+
+        //Message box element for error information
+        $scope.msgBox = {
+            status : false,
+            message : "",
+            show : function(msg){
+                this.status = true;
+                this.message = msg;
+            },
+            hide : function(){
+                this.status = false;
+            },
+            clear : function(){
+                this.message = "";
+            }
+        };
 
         //Not used
         $scope.paginationChanged = function () {
