@@ -6,6 +6,7 @@
     <title>Address book project</title>
     <link rel="stylesheet" type="text/css" href="app/components/bootstrap-3.3.7/css/bootstrap.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="app/components/font-awesome-4.6.3/css/font-awesome.min.css">
 
     <script src="app/js/libs/angular.js"></script>
     <script src="app/js/libs/ui-bootstrap-tpls.min.js"></script>
@@ -30,6 +31,15 @@
     </div>
 </div>
 <div class="container-fixed" id="table" ng-controller="AddressListCtrl">
+    <div class="row" ng-show="dataLoading">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8 text-center ">
+            <h3>Загрузка данных... <i class="fa fa-spinner fa-spin" style="font-size:24px"></i></h3>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
     <table class="table table-bordered table-striped">
         <thead>
         <!-- Add Order filter event (trigger is clicking onto the head) and images for filter status-->
