@@ -5,11 +5,16 @@
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
     <title>Address book project</title>
     <link rel="stylesheet" type="text/css" href="app/components/bootstrap-3.3.7/css/bootstrap.min.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="app/components/font-awesome-4.6.3/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <!-- Angular, angular-translate and ui-bootstrap libs -->
     <script src="app/js/libs/angular.js"></script>
+
     <script src="app/js/libs/ui-bootstrap-tpls.min.js"></script>
+    <!-- Custom apps resources -->
+
     <script src="app/js/app.js"></script>
     <script src="app/js/controllers/AddressListCtrl.js"></script>
     <script src="app/js/services/DataService.js"></script>
@@ -30,7 +35,7 @@
         </div>
     </div>
 </div>
-<div class="container-fixed" id="table" ng-controller="AddressListCtrl">
+<div id="table" ng-controller="AddressListCtrl">
     <div class="row" ng-show="dataLoading">
         <div class="col-lg-2">
         </div>
@@ -42,117 +47,219 @@
     </div>
     <div class="row" ng-show="msgBox.status">
         <div class="col-lg-12 text-center alert alert-danger">
-            <h3 >{{msgBox.message}}</h3>
+            <h3>{{msgBox.message}}</h3>
         </div>
     </div>
-    <table class="table table-bordered table-striped">
+    <!-- added hover -->
+    <table class="table table-bordered table-striped table-hover">
         <thead>
         <!-- Add Order filter event (trigger is clicking onto the head) and images for filter status-->
 
         <tr>
-            <th ng-click="sortType = 'country'; sortReverse = !sortReverse">
-                Страна
-                <span ng-show="sortType == 'country' && !sortReverse"
-                      class="glyphicon glyphicon-arrow-down"></span>
-                <span ng-show="sortType == 'country' && sortReverse"
-                      class="glyphicon glyphicon-arrow-up"></span>
-                <span ng-show="filterStatus.country"
-                      class="glyphicon glyphicon-filter"></span></a>
-            </th>
-            <th ng-click="sortType = 'city'; sortReverse = !sortReverse">
-                Город
-                <span ng-show="sortType == 'city' && !sortReverse"
-                      class="glyphicon glyphicon-arrow-down"></span>
-                <span ng-show="sortType == 'city' && sortReverse"
-                      class="glyphicon glyphicon-arrow-up"></span>
-                <span ng-show="filterStatus.city"
-                      class="glyphicon glyphicon-filter"></span>
-            </th>
-            <th ng-click="sortType = 'street'; sortReverse = !sortReverse">
-                Улица
-                <span ng-show="sortType == 'street' && !sortReverse"
-                      class="glyphicon glyphicon-arrow-down"></span>
-                <span ng-show="sortType == 'street' && sortReverse"
-                      class="glyphicon glyphicon-arrow-up"></span>
-                <span ng-show="filterStatus.street"
-                      class="glyphicon glyphicon-filter"></span>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <th ng-click="sortType = 'country'; sortReverse = !sortReverse">
+                        Страна
+                        <span ng-show="sortType == 'country' && !sortReverse"
+                              class="glyphicon glyphicon-arrow-down"></span>
+                        <span ng-show="sortType == 'country' && sortReverse"
+                              class="glyphicon glyphicon-arrow-up"></span>
+                        <span ng-show="filterStatus.country"
+                              class="glyphicon glyphicon-filter"></span></a>
+                    </th>
+                    <th ng-click="sortType = 'city'; sortReverse = !sortReverse">
+                        Город
+                        <span ng-show="sortType == 'city' && !sortReverse"
+                              class="glyphicon glyphicon-arrow-down"></span>
+                        <span ng-show="sortType == 'city' && sortReverse"
+                              class="glyphicon glyphicon-arrow-up"></span>
+                        <span ng-show="filterStatus.city"
+                              class="glyphicon glyphicon-filter"></span>
+                    </th>
+                    <th ng-click="sortType = 'street'; sortReverse = !sortReverse">
+                        Улица
+                        <span ng-show="sortType == 'street' && !sortReverse"
+                              class="glyphicon glyphicon-arrow-down"></span>
+                        <span ng-show="sortType == 'street' && sortReverse"
+                              class="glyphicon glyphicon-arrow-up"></span>
+                        <span ng-show="filterStatus.street"
+                              class="glyphicon glyphicon-filter"></span>
+                    </th>
+                    <th ng-click="sortType = 'house'; sortReverse = !sortReverse">
+                        Дом
+                        <span ng-show="sortType == 'house' && !sortReverse"
+                              class="glyphicon glyphicon-arrow-down"></span>
+                        <span ng-show="sortType == 'house' && sortReverse"
+                              class="glyphicon glyphicon-arrow-up"></span>
+                        <span ng-show="filterStatus.house"
+                              class="glyphicon glyphicon-filter"></span>
+                    </th>
+                    <th ng-click="sortType = 'postcode'; sortReverse = !sortReverse">
+                        Индекс
+                        <span ng-show="sortType == 'postcode' && !sortReverse"
+                              class="glyphicon glyphicon-arrow-down"></span>
+                        <span ng-show="sortType == 'postcode' && sortReverse"
+                              class="glyphicon glyphicon-arrow-up"></span>
+                        <span ng-show="filterStatus.postcode"
+                              class="glyphicon glyphicon-filter"></span>
+                    </th>
+                    <th ng-click="sortType = 'date'; sortReverse = !sortReverse">
+                        Дата
+                        <span ng-show="sortType == 'date' && !sortReverse"
+                              class="glyphicon glyphicon-arrow-down"></span>
+                        <span ng-show="sortType == 'date' && sortReverse"
+                              class="glyphicon glyphicon-arrow-up"></span>
+                        <span ng-show="filterStatus.date"
+                              class="glyphicon glyphicon-filter"></span>
+                    </th>
 
-            </th>
-            <th ng-click="sortType = 'house'; sortReverse = !sortReverse">
-                Дом
-                <span ng-show="sortType == 'house' && !sortReverse"
-                      class="glyphicon glyphicon-arrow-down"></span>
-                <span ng-show="sortType == 'house' && sortReverse"
-                      class="glyphicon glyphicon-arrow-up"></span>
-                <span ng-show="filterStatus.house"
-                      class="glyphicon glyphicon-filter"></span>
-            </th>
-            <th ng-click="sortType = 'postcode'; sortReverse = !sortReverse">
-                Индекс
-                <span ng-show="sortType == 'postcode' && !sortReverse"
-                      class="glyphicon glyphicon-arrow-down"></span>
-                <span ng-show="sortType == 'postcode' && sortReverse"
-                      class="glyphicon glyphicon-arrow-up"></span>
-                <span ng-show="filterStatus.postcode"
-                      class="glyphicon glyphicon-filter"></span>
-            </th>
-            <th ng-click="sortType = 'date'; sortReverse = !sortReverse">
-                Дата
-                <span ng-show="sortType == 'date' && !sortReverse"
-                      class="glyphicon glyphicon-arrow-down"></span>
-                <span ng-show="sortType == 'date' && sortReverse"
-                      class="glyphicon glyphicon-arrow-up"></span>
-                <span ng-show="filterStatus.date"
-                      class="glyphicon glyphicon-filter"></span>
-            </th>
+                </div>
+            </div>
         </tr>
 
         <!-- Add Search filter for columns-->
         <tr>
             <td>
-                <input type="text" placeholder="поиск"
-                       ng-change="filter.country()"
-                       ng-model="search.country">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input class="form-control" type="text" placeholder="Страна"
+                               ng-change="filter.country()"
+                               ng-model="search.country"/>
+                    </div>
+                </div>
             </td>
             <td>
-                <input type="text" placeholder="поиск"
-                       ng-change="filter.city()"
-                       ng-model="search.city"
-                       ng-pattern="regexSet.city">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input class="form-control" type="text" placeholder="Город"
+                               ng-change="filter.city()"
+                               ng-model="search.city"/>
+                    </div>
+                </div>
             </td>
             <td>
-                <input type="text" placeholder="поиск"
-                       ng-model="search.street"
-                       ng-change="filter.street()">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input class="form-control" type="text" placeholder="Улица"
+                               ng-model="search.street"
+                               ng-change="filter.street()"/>
+                    </div>
+                </div>
             </td>
             <td>
-                <input type="text" placeholder="поиск"
-                       ng-model="search.house"
-                       ng-change="filter.house()">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input class="form-control input-group-lg" placeholder="Номер дома или диапазон"
+                               ng-pattern="regexSet.house"
+                               ng-model="houseNum"
+                               type="text"
+                               ng-change="filter.house()"
+                        />
 
+                    </div>
+                </div>
             </td>
             <td>
-                <input type="text" placeholder="поиск"
-                       ng-model="search.postcode"
-                       ng-change="filter.postcode()">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input class="form-control" placeholder="Индекс"
+                               type="text"
+                               ng-pattern="regexSet.postcode"
+                               ng-model="search.postcode"
+                               ng-change="filter.postcode()"/>
+                    </div>
+                </div>
             </td>
             <td>
-                <input type="text" placeholder="поиск"
-                       ng-model="search.date"
-                       ng-change="filter.date()">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <p class="input-group">
+                            <input type="text" class="form-control"
+                                   uib-datepicker-popup="dataPickers.format[0]"
+                                   ng-model="search.datepicker.minDate"
+                                   ng-change="filter.datepicker.minDateChange()"
+                                   is-open="false"
+                                   datepicker-options="dateOptions"
+                                   ng-required="true"
+                                   close-text="Close"
+                                   alt-input-formats="altInputFormats"
+                            />
+                            <span class="input-group-btn">
+                 <button type="button" class="btn btn-default" ng-click="open1()"><i
+                         class="glyphicon glyphicon-calendar"></i></button>
+                 </span>
+                        </p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-5">
+                        <p class="input-group">
+                            <input type="text" class="form-control"
+                                   ng-model="search.datepicker.maxDate"
+                                   ng-change="filter.datepicker.maxDateChange()"
+                                   uib-datepicker-popup="dataPickers.format[1]"
+                                   is-open="false"
+                                   datepicker-options="dateOptions"
+                                   ng-required="true"
+                                   close-text="Close"/>
+                            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open2()"><i
+                      class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                        </p>
+                    </div>
+                </div>
+
             </td>
         </tr>
         </thead>
+
         <tbody>
-        <tr ng-repeat="address in filteredAddresses = (addresses | filter:search:strict) |
-		startFrom : ((currentPage - 1)*itemsPerPage) : ((currentPage - 1)*itemsPerPage + itemsPerPage)|
-        orderBy:sortType:sortReverse">
-            <td>{{address.country}}</td>
-            <td>{{address.city}}</td>
-            <td>{{address.street}}</td>
-            <td>{{address.house}}</td>
-            <td>{{address.postcode}}</td>
-            <td>{{address.date.date}}</td>
+        <!-- checked order sort -->
+        <tr ng-repeat="address in filteredAddresses = (addresses | filter:search |
+        orderBy:sortType:sortReverse)|
+		startFrom : ((currentPage - 1)*itemsPerPage) : ((currentPage - 1)*itemsPerPage + itemsPerPage)">
+            <td>
+                <div class="row">
+                    <div class="col-lg-12 text-left">
+                        {{address.country}}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col-lg-12 text-left">
+                        {{address.city}}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col-lg-12 text-left">
+                        {{address.street}}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col-lg-12 text-left">
+                        {{address.house}}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col-lg-12 text-left">
+                        {{address.postcode}}
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        {{address.date.date}}
+                    </div>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -189,19 +296,21 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fixed" id="footer">
-    <div class="row">
-        <div class="col-lg-12 text-left">
-            <p>Author: Igor Sysoev</p>
+
+    <div class="container-fixed" id="footer">
+        <div class="row">
+            <div class="col-lg-12 text-left">
+                <p>Author: Igor Sysoev</p>
+            </div>
+
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col-lg-12 text-left">
-            <p>Contact information: <a href="mailto:is.sysoev@gmail.com">is.sysoev@gmail.com</a></p>
+        <div class="row">
+            <div class="col-lg-12 text-left">
+                <p>Contact information: <a href="mailto:is.sysoev@gmail.com">is.sysoev@gmail.com</a></p>
+            </div>
         </div>
     </div>
 </body>
 </html>
+<!-- checked ordering by method; added range for house added datapicker-->
