@@ -15,7 +15,7 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', 'DataService',
          }).finally(function () {
          $scope.dataLoading = false;
          });
-         */
+ //        */
         /*Test array
          From database formAT 2016-08-24 23:00:00.000000
          */
@@ -145,7 +145,7 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', 'DataService',
 
         //Default parameters for pagination
         $scope.currentPage = 1;
-        $scope.itemsPerPage = 5;
+        $scope.itemsPerPage = 25;
         $scope.maxSize = 5;
 
         $scope.filterStatus = {
@@ -218,11 +218,6 @@ addressBookApp.controller('AddressListCtrl', ['$scope', '$log', 'DataService',
                 this.message = "";
             }
         };
-
-
-
-
-
 
         //Not used
         $scope.paginationChanged = function () {

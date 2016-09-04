@@ -172,9 +172,9 @@
             </td>
             <td>
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <p class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control" placeholder="начиная с"
                                    uib-datepicker-popup="dataPickers.format[0]"
                                    ng-model="search.datepicker.minDate"
                                    ng-change="filter.datepicker.minDateChange()"
@@ -182,18 +182,20 @@
                                    datepicker-options="dateOptions"
                                    ng-required="true"
                                    close-text="Close"
-                                   alt-input-formats="altInputFormats"
-                            />
+                                   alt-input-formats="altInputFormats"/>
                             <span class="input-group-btn">
-                 <button type="button" class="btn btn-default" ng-click="open1()"><i
-                         class="glyphicon glyphicon-calendar"></i></button>
-                 </span>
+                                <button type="button" class="btn btn-default"
+                                        ng-click="open1()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
                         </p>
                     </div>
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-5">
+
+                    <div class="col-lg-6">
                         <p class="input-group">
                             <input type="text" class="form-control"
+                                   placeholder="по"
                                    ng-model="search.datepicker.maxDate"
                                    ng-change="filter.datepicker.maxDateChange()"
                                    uib-datepicker-popup="dataPickers.format[1]"
@@ -202,13 +204,13 @@
                                    ng-required="true"
                                    close-text="Close"/>
                             <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="open2()"><i
-                      class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+                              <button type="button" class="btn btn-default"
+                                      ng-click="open2()">
+                              <i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
                         </p>
                     </div>
                 </div>
-
             </td>
         </tr>
         </thead>
